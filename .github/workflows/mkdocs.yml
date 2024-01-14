@@ -1,0 +1,39 @@
+---
+name: deploy mkdocs
+on: push
+
+jobs:
+  build-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout our code
+        uses: actions/checkout@v4
+
+      - name: install node
+        uses: actions/setup-python@v5
+        with:
+          cache: "pip"
+
+      - name: install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: build mkdocs
+        run: |
+          mkdocs build
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: html
+          path: site/
+
+  deploy-cd:
+    needs: build-ci
+    runs-on: self-hosted
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v4
+        with:
+          path: /var/www/html/
+          name: html
