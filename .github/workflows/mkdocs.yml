@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build-ci:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: checkout our code
         uses: actions/checkout@v4
@@ -17,6 +17,7 @@ jobs:
       - name: install dependencies
         run: |
           pip install -r requirements.txt
+          ls
             
 
       - name: build mkdocs
