@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build-ci:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: checkout our code
         uses: actions/checkout@v4
