@@ -9,10 +9,10 @@ jobs:
       - name: checkout our code
         uses: actions/checkout@v4
 
-      - name: install node
+      - name: install python
         uses: actions/setup-python@v5
-        with:
-          cache: "pip"
+        #with:
+          #cache: "pip"
 
       - name: install dependencies
         run: |
