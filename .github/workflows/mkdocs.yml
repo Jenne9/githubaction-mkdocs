@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build-ci:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: checkout our code
         uses: actions/checkout@v4
@@ -20,7 +20,6 @@ jobs:
 
       - name: build mkdocs
         run: |
-          pip install mkdocs
           mkdocs build
 
       - name: upload artifact
