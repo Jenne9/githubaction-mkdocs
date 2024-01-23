@@ -17,11 +17,10 @@ jobs:
       - name: install dependencies
         run: |
           pip install -r requirements.txt
-          ls
-            
 
       - name: build mkdocs
         run: |
+          pip install mkdocs
           mkdocs build
 
       - name: upload artifact
