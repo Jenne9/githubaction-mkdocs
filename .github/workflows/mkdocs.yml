@@ -4,20 +4,19 @@ on: push
 
 jobs:
   build-ci:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: checkout our code
         uses: actions/checkout@v4
 
       - name: install python
         uses: actions/setup-python@v5
-        #with:
-          #cache: "pip"
+        with:
+          cache: "pip"
 
       - name: install dependencies
         run: |
-          pip install mkdocs
-        #pip install -r requirements.txt
+          pip install -r requirements.txt
             
 
       - name: build mkdocs
